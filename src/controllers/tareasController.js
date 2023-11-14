@@ -8,6 +8,19 @@ const index = (req, res) => {
   res.render("index", { tareas });
 };
 
+const store = (req, res) => {
+  const tarea = {
+    id: Date.now(),
+    title: req.body.title,
+    completed: false,
+  };
+
+  tareas.push(tarea);
+
+  res.redirect("/");
+};
+
 module.exports = {
   index,
+  store
 };

@@ -10,6 +10,8 @@ app.set("views", "./src/views");
 app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 
+app.use(express.urlencoded({ extended: false }));
+
 app.use(require("./src/routes/tareasRouter"));
 
 const PORT = 3000;

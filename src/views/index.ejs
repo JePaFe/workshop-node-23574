@@ -18,6 +18,18 @@ Tareas
   <h2>Listado tareas</h2>
 
   <% tareas.forEach(tarea => { %> 
-    <li><%= tarea.title %></li> 
+    <%- include('partials/item', { tarea }) %> 
   <% }) %>
 </main>
+
+<script>
+  document.addEventListener("submit", (event) => {
+    if (event.target.classList.contains("form-delete")) {
+      event.preventDefault();
+
+      if (confirm("¿Esta seguro?")) {
+        event.target.submit();
+      }
+    }
+  });
+</script>

@@ -20,7 +20,25 @@ const store = (req, res) => {
   res.redirect("/");
 };
 
+const update = (req, res) => {
+  tareas.forEach((tarea) => {
+    if (tarea.id == req.params.id) {
+      tarea.completed = !tarea.completed;
+    }
+  });
+
+  res.redirect("/");
+};
+
+const destroy = (req, res) => {
+  tareas = tareas.filter((tarea) => tarea.id != req.params.id);
+
+  res.redirect("/");
+};
+
 module.exports = {
   index,
-  store
+  store,
+  update,
+  destroy,
 };

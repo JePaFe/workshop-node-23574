@@ -1,7 +1,8 @@
 const express = require("express");
 const app = express();
-const path = require('path')
+const path = require("path");
 const expressLayouts = require("express-ejs-layouts");
+const methodOverride = require("method-override");
 
 app.use(express.static(path.join(__dirname, "/public")));
 
@@ -12,6 +13,7 @@ app.use(expressLayouts);
 app.set("layout", "layouts/layout");
 
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
 
 app.use(require("./src/routes/tareasRouter"));
 
